@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApplyFlow - Application Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="form-card">
+
+        <h1>ApplyFlow</h1>
+        <p class="subtitle">Submit your application</p>
+
+        <form id="applicationForm" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth *</label>
+                <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter 10 digit phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    inputmode="numeric"
+                    required
+                >
+                <small>Enter 10 digit phone number</small>
+            </div>
+
+            <div class="form-group">
+                <label>Gender *</label>
+
+                <div class="gender-options">
+
+                    <label class="radio-option">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Male"
+                            required
+                        >
+                        <span>Male</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="Female"
+                        >
+                        <span>Female</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cv">Upload CV *</label>
+
+                <input
+                    type="file"
+                    id="cv"
+                    name="cv"
+                    accept=".pdf,.doc,.docx"
+                    required
+                >
+
+                <small>
+                    PDF, DOC or DOCX — maximum 5MB
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Enter your message"
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn">
+                Submit Application
+            </button>
+
+            <div id="status"></div>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

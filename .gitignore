@@ -1,0 +1,41 @@
+# Environment
+
+.env
+.env.*
+!.env.example
+
+# Node.js
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# Application data
+
+data/mongodb/*
+data/uploads/*
+
+# Keep folders in Git
+
+!data/mongodb/.gitkeep
+!data/uploads/.gitkeep
+
+# Logs
+
+*.log
+logs/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+
+# Temporary files
+
+*.tmp
+*.temp
