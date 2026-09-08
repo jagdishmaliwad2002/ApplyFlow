@@ -45,17 +45,34 @@ pipeline {
         stage('Health Check') {
             steps {
                 sh '''
-                    ssh \
-                    -i /var/lib/jenkins/.ssh/applyflow_deploy \
-                    -o StrictHostKeyChecking=accept-new \
-                    ubuntu@172.31.1.75 \
-                    "curl -f -s http://localhost/api/health"
+                    echo "Waiting for ApplyFlow API..."
+
+                    for i in {1..12}; do
+
+                        if ssh \
+                            -i /var/lib/jenkins/.ssh/applyflow_deploy \
+                            -o StrictHostKeyChecking=accept-new \
+                            ubuntu@172.31.1.75 \
+                            "curl -f -s http://localhost/api/health"; then
+
+                            echo
+                            echo "Health check passed."
+                            exit 0
+                        fi
+
+                        echo "API not ready yet. Waiting 5 seconds..."
+                        sleep 5
+                    done
+
+                    echo "Health check failed."
+                    exit 1
                 '''
             }
         }
     }
 
     post {
+
         success {
             echo 'ApplyFlow deployment successful!'
         }
