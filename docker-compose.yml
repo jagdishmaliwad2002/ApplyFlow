@@ -4,10 +4,11 @@ services:
     image: 629229067219.dkr.ecr.us-east-1.amazonaws.com/applyflow-frontend:${IMAGE_TAG}
     ports:
       - "80:80"
+    volumes:
+      - /var/www/certbot:/var/www/certbot:ro
     depends_on:
       - backend
     restart: unless-stopped
-
   backend:
     image: 629229067219.dkr.ecr.us-east-1.amazonaws.com/applyflow-backend:${IMAGE_TAG}
     environment:
